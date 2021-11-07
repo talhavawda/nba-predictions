@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e3a51e-38ed-41b3-99ce-78967037586a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/nba-predictions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nba-predictions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OutlierDetection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameOutcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameOutcome.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/team_season.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/team_season.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +32,38 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OutlierDetectionOld.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/OutlierDetectionOld.py" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\talha\Documents\CS Honours\COMP721 - ML\Assessments\Project\nba-predictions\data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.GameOutcome">
+    <configuration name="GameOutcome" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="nba-predictions" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GameOutcome.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="OutlierDetection" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="nba-predictions" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -61,6 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GameOutcome" />
         <item itemvalue="Python.OutlierDetection" />
       </list>
     </recent_temporary>
@@ -77,7 +105,9 @@
       <updated>1635694896557</updated>
       <workItem from="1635694901219" duration="493000" />
       <workItem from="1635710350376" duration="552000" />
-      <workItem from="1635777090076" duration="1061000" />
+      <workItem from="1635777090076" duration="6554000" />
+      <workItem from="1636030524924" duration="8000" />
+      <workItem from="1636202252109" duration="19702000" />
     </task>
     <servers />
   </component>
@@ -85,10 +115,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1635778165618">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1635803635741">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778165618" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635803635741" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1635778133010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -97,32 +127,39 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778093364" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1635778181461">
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom" timestamp="1636305450148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778181461" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1635778181461">
+    <state width="1237" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1635929989047" />
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1636305450148" />
+    <state width="1877" height="387" key="GridCell.Tab.0.center" timestamp="1636305450148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778181461" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1635778181461">
+    <state width="1237" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1635929989044" />
+    <state width="1877" height="387" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1636305450148" />
+    <state width="1877" height="387" key="GridCell.Tab.0.left" timestamp="1636305450148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778181461" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1635778181461">
+    <state width="1237" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1635929989041" />
+    <state width="1877" height="387" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1636305450148" />
+    <state width="1877" height="387" key="GridCell.Tab.0.right" timestamp="1636305450148">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635778181461" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1635777301914">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1237" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1635929989046" />
+    <state width="1877" height="387" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1636305450148" />
+    <state x="-998" y="165" key="SettingsEditor" timestamp="1636218359042">
+      <screen x="-1280" y="12" width="1280" height="984" />
     </state>
+    <state x="-998" y="165" key="SettingsEditor/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1636218359042" />
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635777301914" />
-    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1635777116796">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-843" y="337" key="com.intellij.ide.util.TipDialog" timestamp="1636202262877">
+      <screen x="-1280" y="12" width="1280" height="984" />
     </state>
+    <state x="-843" y="337" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.12.1280.984@-1280.12.1280.984" timestamp="1636202262877" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.12.1280.984@0.0.1920.1040" timestamp="1635777116796" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nba_predictions$OutlierDetection.coverage" NAME="OutlierDetection Coverage Results" MODIFIED="1635778169141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nba_predictions$GameOutcome.coverage" NAME="GameOutcome Coverage Results" MODIFIED="1636302156833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
