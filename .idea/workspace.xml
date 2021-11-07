@@ -4,7 +4,6 @@
     <list default="true" id="16e3a51e-38ed-41b3-99ce-78967037586a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameOutcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameOutcome.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/team_season.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/team_season.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,7 @@
       <workItem from="1635710350376" duration="552000" />
       <workItem from="1635777090076" duration="6554000" />
       <workItem from="1636030524924" duration="8000" />
-      <workItem from="1636202252109" duration="19702000" />
+      <workItem from="1636202252109" duration="20151000" />
     </task>
     <servers />
   </component>

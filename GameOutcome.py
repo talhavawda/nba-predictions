@@ -27,8 +27,8 @@ from sklearn import metrics, preprocessing
 		
 		Possible method:
 		A test data sample instance is a feature-vector of the 31-instances and the prediction (if using SL) can be 
-		the predicted win rate, and we take two test samples (using two teams) and the team with the higher predicted win 
-		rate should win the match (we can maybe use one hot encoding for the NN)
+		the predicted win rate (representing win probability), and we take two test samples (using two teams) and the team with 
+		the higher predicted win rate should win the match (we can maybe use one hot encoding for the NN)
 """
 
 
@@ -38,9 +38,6 @@ from sklearn import metrics, preprocessing
 # ANNs
 # use regression wit win rate as the labels?
 # use recurrent NN to favour more recent seasons?
-
-# Training can be on all the data in the dataset file with the labels being the win rate (a probability value), and test data can be a team with
-# all the features specified, and goal is to output the probability of winning
 
 
 """
@@ -225,9 +222,7 @@ scaler = preprocessing.StandardScaler()
 
 # Get the normalised featureMatrixDF
 normalisedFMDF = pd.DataFrame(scaler.fit_transform(featureMatrixDF), columns=featureMatrixDF.columns)  # Normalise feature matrix and convert back to a DataFrame
-print(normalisedFMDF)
-print(labelsDF)
-print(normalisedFMDF.iloc[0])
+#print(normalisedFMDF)
 
 # Do PCA?
 # See what PCA is: https://builtin.com/data-science/step-step-explanation-principal-component-analysis
@@ -239,7 +234,8 @@ print(normalisedFMDF.iloc[0])
 	Training
 	- Using keras/tensorflow for the NN modelling
 """
-
+# features - normalisedFMDF
+# labels - labelsDF
 
 # Training can be on all the data in the dataset file with the labels being the win rate (a probability value), and test data can be a team with
 # all the features specified, and goal is to output the probability of winning
