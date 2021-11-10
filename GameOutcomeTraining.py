@@ -249,7 +249,7 @@ def main():
 		that outputs a 1 if the first team won or 0 otherwise (or maybe a softmax that outputs 1, 0 or 0, 1)
 	"""
 
-	# Learning Algorithms
+	# Supervised Learning Algorithms
 
 	"""
 		MLPRegressor implements a Multi-Layer Perceptron ANN that trains using Backpropagation, and which doesn't make use
@@ -261,17 +261,24 @@ def main():
 		Since our dataset is small, we're using the lbfgs solver (a stochastic gradient-based optimizer) over the adam solver 
 		for weight optimization aws it converges faster for small datasets. 
 		Since the solver us lbfgs, minibatches will not be used.
+		
+		
+		https://scikit-learn.org/stable/modules/neural_networks_supervised.html
+		https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
 	"""
 	mlpRegressor = MLPRegressor(hidden_layer_sizes=(100, 100, 100), solver="lbfgs", activation="tanh", random_state=1,
 	                            max_iter=10000)
 
 	"""
 		SVR - Support Vector Machine Regression model
+		https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html
 	"""
 	svRegressor = SVR()
 
 	"""
 		Linear Regression model
+		https://scikit-learn.org/stable/modules/linear_model.html
+		https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 	"""
 	linearRegressor = LinearRegression()
 

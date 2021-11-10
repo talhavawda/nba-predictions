@@ -40,8 +40,8 @@
       <recent name="C:\Users\talha\Documents\CS Honours\COMP721 - ML\Assessments\Project\nba-predictions\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.GameOutcome">
-    <configuration name="GameOutcome" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.GameOutcomeTraining">
+    <configuration name="GameOutcomeTraining" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="nba-predictions" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -54,7 +54,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GameOutcome.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\talha\Documents\CS Honours\COMP721 - ML\Assessments\Project\nba-predictions\GameOutcomeTraining.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -87,7 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GameOutcome" />
+        <item itemvalue="Python.GameOutcomeTraining" />
         <item itemvalue="Python.OutlierDetection" />
       </list>
     </recent_temporary>
@@ -107,7 +107,7 @@
       <workItem from="1635777090076" duration="6554000" />
       <workItem from="1636030524924" duration="8000" />
       <workItem from="1636202252109" duration="20198000" />
-      <workItem from="1636398923659" duration="12503000" />
+      <workItem from="1636398923659" duration="13469000" />
     </task>
     <servers />
   </component>
