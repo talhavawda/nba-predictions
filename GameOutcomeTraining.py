@@ -4,8 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
-from sklearn import metrics, preprocessing
-
+from sklearn import preprocessing
+from sklearn.metrics import mean_absolute_error, explained_variance_score, max_error, mean_squared_error, median_absolute_error, r2_score
 """
 	Game Prediction: Predicting the outcome of a game, given 2 teams.
 
@@ -24,7 +24,7 @@ from sklearn import metrics, preprocessing
 		Offensive stats are stats for this team, and defensive stats are stats against this team (i.e. stats conceded by this team)
 
 		Features (the stats) using: 
-			31 features from team_season.txt - 15 offensive (o) stats, 15 defensive (d) stats, and the pace stat
+			31 features from team_season.txt - 15 offensive (o) stats (for stats), 15 defensive (d) stats (against stats), and the pace stat (a for stat)
 
 		We can use the win rate of the team-season entry as the label if we're going the Supervised Learning route
 
@@ -299,9 +299,11 @@ def main():
 	# https://scikit-learn.org/0.15/modules/model_evaluation.html
 
 	# Save (persist) the best algorithm so that we can apply it
+	# https://scikit-learn.org/stable/modules/model_persistence.html
+
 	mlpRegressor.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
 
-	from joblib import dump, load
+	from joblib import dump
 	dump(mlpRegressor, "mlpRegressor.joblib")
 
 
