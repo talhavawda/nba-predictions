@@ -91,8 +91,7 @@ def main():
 		The average win rate will be 0.5 since for each game a team won, the other team lost (We have also verified this value below)
 	"""
 
-	averageWinRate = teamSeasonDF["won"].sum() / (
-				teamSeasonDF["won"].sum() + teamSeasonDF["lost"].sum())  # is equal to 0.5
+	averageWinRate = teamSeasonDF["won"].sum() / (teamSeasonDF["won"].sum() + teamSeasonDF["lost"].sum())  # is equal to 0.5
 
 	teamSeason1979DF = teamSeasonDF[teamSeasonDF.year >= 1979]
 
@@ -102,7 +101,6 @@ def main():
 
 	d_3pmDF = teamSeason1979DF["d_3pm"]
 	d_3pmAverage = d_3pmDF.sum() / len(teamSeason1979DF.index)
-
 	# print("d_3pmAverage:", d_3pmAverage)
 
 	def get_o_3pm_value(teamSeasonRow):
@@ -196,6 +194,7 @@ def main():
 
 	# Get a DataFrame containing the features only - remove "team", "year", "leag", "won", "lost" attributes
 	featureMatrixDF = teamSeasonDF.drop(["team", "year", "leag", "won", "lost"], axis=1)
+	print("\nFeature Matrix:")
 	print(featureMatrixDF)
 
 	# Do Dimensionality Reduction using PCA? (maybe not cos we want to use all 31 features?)
@@ -290,8 +289,11 @@ def main():
 		print("Algorithm:", algorithm.__class__.__name__)
 		algorithm.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
 		labelPredictions = algorithm.predict(featuresTestNormalised)
-
 		# print(labelPredictions)
+
+		# Save (persist) each of the algorithm models so that we can use it later on
+		# https://scikit-learn.org/stable/modules/model_persistence.html
+		dump(algorithm, algorithm.__class__.__name__ + ".joblib")
 
 		# Evaluation
 		# since we're doing regression instead of classification, we can't use the standard classification metrics
@@ -308,12 +310,6 @@ def main():
 		print("\t\tMedian Absolute Error: ", median_absolute_error(labelsTest, labelPredictions))
 		print("\t\tR2 Score: ", r2_score(labelsTest, labelPredictions))
 		print()
-
-	# Save (persist) the best algorithm so that we can apply it
-	# https://scikit-learn.org/stable/modules/model_persistence.html
-
-	mlpRegressor.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
-	dump(mlpRegressor, "mlpRegressor.joblib")
 
 
 if __name__ == "__main__":
