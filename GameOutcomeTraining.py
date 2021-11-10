@@ -45,7 +45,7 @@ def main():
 	"""
 
 	# Read the team_season.txt dataset file into a DataFrame
-	teamSeasonsFile = "/team_season.txt"
+	teamSeasonsFile = "data/team_season.txt"
 	teamSeasonDF = pd.read_csv(teamSeasonsFile, header=0)  # First line of data is taken as the column headings
 	# print(teamSeasonDF)
 
@@ -298,9 +298,11 @@ def main():
 	# https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
 	# https://scikit-learn.org/0.15/modules/model_evaluation.html
 
-	# Return the best algorithm
+	# Save (persist) the best algorithm so that we can apply it
 	mlpRegressor.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
-	return mlpRegressor
+
+	from joblib import dump, load
+	dump(mlpRegressor, "mlpRegressor.joblib")
 
 
 if __name__ == "__main__":
