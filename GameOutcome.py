@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
+from sklearn.neural_network import MLPRegressor
 from sklearn import metrics, preprocessing
 
 """
@@ -206,39 +206,83 @@ print(featureMatrixDF)
 
 
 
-# Do Data Normalisation (scaling the data)
+# Do Dimensionality Reduction using PCA? (maybe not cos we want to use all 31 features?)
+# See what PCA is: https://builtin.com/data-science/step-step-explanation-principal-component-analysis
+# https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+
+# Do K-Fold Cross Validation?
+
+
+"""
+		Splitting the labelled dataset into a Training Set (80%) and a Test Set (20%) to do the training and testing
+		Setting train_size to 0.80 and test_size will be automatically set to 0.20 (1.0-0.80)
+
+		The data is shuffled before splitting (by default). However, we are specifying the random_state value (this 
+		fixes the seed of the pseudorandom number generator) so that the dataset is shuffled the same way on each run, 
+		allowing us to accurately compare different ML algorithms 
+
+		featuresTest is what we are going to use to predict the win probability of this team
+		labelsTest matrix is the 'ground truth' labels (i.e. the win rate of this team for the season, which we're using as the win probability)
+"""
+featuresTrain, featuresTest, labelsTrain, labelsTest = train_test_split(featureMatrixDF, labelsDF, train_size=0.80, random_state=1)
+
+
+"""
+	Do Data Standardisation/Normalisation (scaling the data such that it has 0 mean and unit variance, to transform the 
+	range of the feature values to a lower scale, whilst still maintaining the range differences of the data, so that no initial 
+	feature has dominance due to its value range)
+	
+	We're doing the scaling after we split the dataset into the Training Set and Testing Set as we only want the scaling parameters 
+	to be learnt from the training data (so that the testing data is not learnt by the model), 
+	but we shall also therafter apply them to the test data 
+	
+	See: https://towardsdatascience.com/what-and-why-behind-fit-transform-vs-transform-in-scikit-learn-78f915cf96fe
+	See: https://datascience.stackexchange.com/questions/12321/whats-the-difference-between-fit-and-fit-transform-in-scikit-learn-models
+"""
 
 # See https://scikit-learn.org/stable/modules/preprocessing.html
 scaler = preprocessing.StandardScaler()
 
 
-# TODO - (if splitting dataset into training and testing) only call fit_transform() on the Training Data only (and not the entire dataset, which also contains the test data)
-# as we dont want the model to learn/include the the test data when calculating the mean/variance in fit(), but we'll apply them to the test data, so
-# we'll therafter call transform() onto the test data
-# See: https://towardsdatascience.com/what-and-why-behind-fit-transform-vs-transform-in-scikit-learn-78f915cf96fe
-# See: https://datascience.stackexchange.com/questions/12321/whats-the-difference-between-fit-and-fit-transform-in-scikit-learn-models
-
-
-
-# Get the normalised featureMatrixDF
-normalisedFMDF = pd.DataFrame(scaler.fit_transform(featureMatrixDF), columns=featureMatrixDF.columns)  # Normalise feature matrix and convert back to a DataFrame
-#print(normalisedFMDF)
-
-# Do PCA?
-# See what PCA is: https://builtin.com/data-science/step-step-explanation-principal-component-analysis
-# https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
-
+# Get the normalised feature train and test matrices
+scaler.fit(featuresTrain)
+featuresTrainNormalised = pd.DataFrame(scaler.transform(featuresTrain), columns=featuresTrain.columns)  # Normalise feature matrix of training set and convert back to a DataFrame
+featuresTestNormalised = pd.DataFrame(scaler.transform(featuresTest), columns=featuresTest.columns)
 
 
 """
-	Training
-	- Using keras/tensorflow for the NN modelling
+	Prediction - Training and Testing
+	
+	Doing regression as we're predicting the win probability of a team based on its feature-vector of the specified 31 features
+	
+	Given two teams (i.e. their feature vectors of the 31 features each), we predict their win probabilities, and the 
+	team with the higher win probability should be our predicted winner
+	TODO - maybe after obtaning the win probabilities using our model, we can pass them into a simple perceptron (a linear one)
+	that outputs a 1 if the first team won or 0 otherwise (or maybe a softmax that outputs 1, 0 or 0, 1)
 """
-# features - normalisedFMDF
-# labels - labelsDF
 
-# Training can be on all the data in the dataset file with the labels being the win rate (a probability value), and test data can be a team with
-# all the features specified, and goal is to output the probability of winning
+# Learning Algorithms
 
+"""
+	MLPRegressor implements a Multi-Layer Perceptron ANN that trains using Backpropagation, and which doesn't make use
+	of an activation function in the final layer. It uses the Square Error as the loss function.
+	
+	Our Neural Network consists of 3 hidden layers with a 100 neurons (nodes) in each
+	
+	We're using hyperbolic tan as the activation function for the hidden layers.
+	Since our dataset is small, we're using the lbfgs solver (a stochastic gradient-based optimizer) over the adam solver 
+	for weight optimization aws it converges faster for small datasets
+"""
+mlpRegressor = MLPRegressor(hidden_layer_sizes=(100,100, 100), solver="lbfgs", activation="tanh", random_state=1, max_iter=1000)
 
+#Todo - consider other algo's and also if to use an ensemble algo
 
+for algorithm in [mlpRegressor]:
+	print("Algorithm:", algorithm.__class__.__name__)
+	algorithm.fit(featuresTrainNormalised, labelsTrain)
+	labelPredictions = algorithm.predict(featuresTestNormalised)
+	print(labelPredictions)
+
+# Evaluation
+# since we're doing regression instead of classification, we can't use the standard classification metrics
+# so look at mean squared error etc.
