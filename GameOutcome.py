@@ -1,6 +1,9 @@
 import pandas as pd
+import numpy
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.svm import SVR
 from sklearn import metrics, preprocessing
 
 """
@@ -31,13 +34,6 @@ from sklearn import metrics, preprocessing
 		the higher predicted win rate should win the match (we can maybe use one hot encoding for the NN)
 """
 
-
-#3. Linear Regression?
-#4  Measure the probability of each team winning
-
-# ANNs
-# use regression wit win rate as the labels?
-# use recurrent NN to favour more recent seasons?
 
 
 """
@@ -271,18 +267,29 @@ featuresTestNormalised = pd.DataFrame(scaler.transform(featuresTest), columns=fe
 	
 	We're using hyperbolic tan as the activation function for the hidden layers.
 	Since our dataset is small, we're using the lbfgs solver (a stochastic gradient-based optimizer) over the adam solver 
-	for weight optimization aws it converges faster for small datasets
+	for weight optimization aws it converges faster for small datasets. 
+	Since the solver us lbfgs, minibatches will not be used.
 """
-mlpRegressor = MLPRegressor(hidden_layer_sizes=(100,100, 100), solver="lbfgs", activation="tanh", random_state=1, max_iter=1000)
+mlpRegressor = MLPRegressor(hidden_layer_sizes=(100, 100, 100), solver="lbfgs", activation="tanh", random_state=1, max_iter=100000)
 
-#Todo - consider other algo's and also if to use an ensemble algo
+"""
+	SVR - Support Vector Machine Regression model
+"""
+svRegressor = SVR()
 
-for algorithm in [mlpRegressor]:
+"""
+	Linear Regression model
+"""
+linearRegressor = LinearRegression()
+
+#Todo - consider to use an ensemble algo | alternatively evaluate all and select best
+
+for algorithm in [mlpRegressor, svRegressor, linearRegressor]:
 	print("Algorithm:", algorithm.__class__.__name__)
-	algorithm.fit(featuresTrainNormalised, labelsTrain)
+	algorithm.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
 	labelPredictions = algorithm.predict(featuresTestNormalised)
 	print(labelPredictions)
 
-# Evaluation
-# since we're doing regression instead of classification, we can't use the standard classification metrics
-# so look at mean squared error etc.
+	# Evaluation
+	# since we're doing regression instead of classification, we can't use the standard classification metrics
+	# so look at mean squared error etc.
