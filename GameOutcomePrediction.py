@@ -14,7 +14,7 @@ def main():
 	print("NBA GAME OUTCOME PREDICTION")
 	print("============================")
 
-	model = load("mlpRegressor.joblib")
+	model = load("MLPRegressor.joblib")
 
 	filePath = input("\nEnter the name of the textfile (located in the current directory) containing the feature vectors of the 2 teams: ")
 	# GameOutcomeTest1.csv

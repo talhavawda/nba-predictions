@@ -42,6 +42,9 @@ def main():
 		:return: the best learning model, according to our evaluation
 	"""
 
+	print("NBA GAME OUTCOME PREDICTIONS - MODEL TRAINING")
+	print("=============================================")
+
 	"""
 		Data Acquisition and Pre-processing
 	"""
