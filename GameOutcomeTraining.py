@@ -6,6 +6,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn import preprocessing
 from sklearn.metrics import mean_absolute_error, explained_variance_score, max_error, mean_squared_error, median_absolute_error, r2_score
+from joblib import dump
+
 """
 	Game Prediction: Predicting the outcome of a game, given 2 teams.
 
@@ -289,21 +291,28 @@ def main():
 		algorithm.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
 		labelPredictions = algorithm.predict(featuresTestNormalised)
 
-		print(labelPredictions)
+		# print(labelPredictions)
 
-	# Evaluation
-	# since we're doing regression instead of classification, we can't use the standard classification metrics
-	# so look at mean squared error etc.
+		# Evaluation
+		# since we're doing regression instead of classification, we can't use the standard classification metrics
+		# so look at mean squared error etc.
 
-	# https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
-	# https://scikit-learn.org/0.15/modules/model_evaluation.html
+		# https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
+		# https://scikit-learn.org/0.15/modules/model_evaluation.html
+
+		print("\tPrediction Metrics:")
+		print("\t\tMax Error: ", max_error(labelsTest, labelPredictions))
+		print("\t\tExplained Variance Score: ", explained_variance_score(labelsTest, labelPredictions))
+		print("\t\tMean Absolute Error: ", mean_absolute_error(labelsTest, labelPredictions))
+		print("\t\tMean Squared Error: ", mean_squared_error(labelsTest, labelPredictions))
+		print("\t\tMedian Absolute Error: ", median_absolute_error(labelsTest, labelPredictions))
+		print("\t\tR2 Score: ", r2_score(labelsTest, labelPredictions))
+		print()
 
 	# Save (persist) the best algorithm so that we can apply it
 	# https://scikit-learn.org/stable/modules/model_persistence.html
 
 	mlpRegressor.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
-
-	from joblib import dump
 	dump(mlpRegressor, "mlpRegressor.joblib")
 
 
