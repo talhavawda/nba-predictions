@@ -38,9 +38,6 @@ from joblib import dump
 
 
 def main():
-	"""
-		:return: the best learning model, according to our evaluation
-	"""
 
 	print("NBA GAME OUTCOME PREDICTIONS - MODEL TRAINING")
 	print("=============================================")
@@ -200,11 +197,15 @@ def main():
 	print("\nFeature Matrix:")
 	print(featureMatrixDF)
 
-	# Do Dimensionality Reduction using PCA? (maybe not cos we want to use all 31 features?)
-	# See what PCA is: https://builtin.com/data-science/step-step-explanation-principal-component-analysis
-	# https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
-
-	# Do K-Fold Cross Validation?
+	"""
+		We have decided not to do Dimensionality Reduction on the features as we'd like 
+		to use all the 31 specified features in training our models and the training process
+		does not take very long as the dataset is fairly small
+		
+		PCA:
+			https://builtin.com/data-science/step-step-explanation-principal-component-analysis
+			https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+	"""
 
 	"""
 			Splitting the labelled dataset into a Training Set (80%) and a Test Set (20%) to do the training and testing
@@ -217,8 +218,7 @@ def main():
 			featuresTest is what we are going to use to predict the win probability of this team
 			labelsTest matrix is the 'ground truth' labels (i.e. the win rate of this team for the season, which we're using as the win probability)
 	"""
-	featuresTrain, featuresTest, labelsTrain, labelsTest = train_test_split(featureMatrixDF, labelsDF, train_size=0.80,
-	                                                                        random_state=1)
+	featuresTrain, featuresTest, labelsTrain, labelsTest = train_test_split(featureMatrixDF, labelsDF, train_size=0.80, random_state=1)
 
 	"""
 		Do Data Standardisation/Normalisation (scaling the data such that it has 0 mean and unit variance, to transform the 
@@ -286,8 +286,6 @@ def main():
 	"""
 	linearRegressor = LinearRegression()
 
-	# Todo - consider to use an ensemble algo
-
 	for algorithm in [mlpRegressor, svRegressor, linearRegressor]:
 		print("Algorithm:", algorithm.__class__.__name__)
 		algorithm.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
@@ -298,13 +296,15 @@ def main():
 		# https://scikit-learn.org/stable/modules/model_persistence.html
 		dump(algorithm, algorithm.__class__.__name__ + ".joblib")
 
-		# Evaluation
-		# since we're doing regression instead of classification, we can't use the standard classification metrics
-		# so look at mean squared error etc.
+		"""
+			Evaluation
+			
+			- Since we're doing regression instead of classification, we can't use the standard classification metrics
+	
+			https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
+			https://scikit-learn.org/0.15/modules/model_evaluation.html
 
-		# https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
-		# https://scikit-learn.org/0.15/modules/model_evaluation.html
-
+		"""
 		print("\tPrediction Metrics:")
 		print("\t\tMax Error: ", max_error(labelsTest, labelPredictions))
 		print("\t\tExplained Variance Score: ", explained_variance_score(labelsTest, labelPredictions))

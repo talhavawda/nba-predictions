@@ -1,6 +1,5 @@
 import pandas as pd
 from joblib import load
-import GameOutcomeTraining
 
 """
 	Prediction the winner of an NBA game using our best trained model given the feature vectors (of the 31 features) of 2 teams
