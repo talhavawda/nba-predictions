@@ -56,7 +56,7 @@ def outlierDetect(df1, year, start, end, name):
         updatedOutlierIndices.append(player_playoffs_outlier_index[0][i] + startIndex)
 
     outlier_values = principalDf.iloc[player_playoffs_outlier_index]
-    Y = df.iloc[player_playoffs_outlier_index]
+    Y = df1.iloc[player_playoffs_outlier_index]
     # print(self.df)
 
     data_with_clusters = Y.copy()
