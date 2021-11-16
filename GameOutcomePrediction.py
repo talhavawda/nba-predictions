@@ -26,7 +26,7 @@ def main():
 		and for GameOutcomeTest2.csv the prediction values are: 93.45959189775459 and -229.2144936475864
 		
 		Upon testing the SVM Regression model on our 3 test files, we found that for each time it was predicting
-		a win probability of 5052607385733374. 
+		a win probability of 0.5052607385733374. 
 		
 		Thus we cannot use the Linear Regression and SVM Regression models in our final model, although we were considering
 		creating an ensemble model.
