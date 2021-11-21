@@ -2,7 +2,6 @@ import pandas as pd
 import numpy
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
-from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn import preprocessing
 from sklearn.metrics import mean_absolute_error, explained_variance_score, max_error, mean_squared_error, median_absolute_error, r2_score
@@ -279,14 +278,9 @@ def main():
 	"""
 	svRegressor = SVR()
 
-	"""
-		Linear Regression model
-		https://scikit-learn.org/stable/modules/linear_model.html
-		https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
-	"""
-	linearRegressor = LinearRegression()
 
-	for algorithm in [mlpRegressor, svRegressor, linearRegressor]:
+
+	for algorithm in [mlpRegressor, svRegressor]:
 		print("Algorithm:", algorithm.__class__.__name__)
 		algorithm.fit(featuresTrainNormalised, numpy.ravel(labelsTrain))
 		labelPredictions = algorithm.predict(featuresTestNormalised)
