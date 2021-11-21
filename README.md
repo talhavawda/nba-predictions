@@ -14,4 +14,4 @@ Step 3 - you may run "OutlierKNN" or "OutlierKMeans" to determine outstanding pl
 # Game Outcome Prediction
 Step 1 - Run the GameOutcomeTraining file<br />This creates the model and displays the results of the algorithm analysis.
 <br/><br/>
-Step 2 - Run the GameOutcomePrediction file<br />This displays the result of the prediction.
+Step 2 - Run the GameOutcomePrediction file<br />Enter one of the GameOutcomeTestExamples.csv. This displays the result of the prediction.
