@@ -12,6 +12,6 @@ Step 3 - you may run "OutlierKNN" or "OutlierKMeans" to determine outstanding pl
          "OutliersKMeans" determines more relavent outstanding players than "OutlierKNN". Ensure that
          the dataset folder "data" is in the same folder as the source files.
 # Game Outcome Prediction
-Step 1 - Run the GameOutcomeTraining file  This creates the model and displays the results of the algorithm analysis.
+Step 1 - Run the GameOutcomeTraining file<br />This creates the model and displays the results of the algorithm analysis.
 <br/><br/>
-Step 2 - Run the GameOutcomePrediction file  This displays the result of the prediction.
+Step 2 - Run the GameOutcomePrediction file<br />This displays the result of the prediction.
