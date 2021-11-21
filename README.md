@@ -13,5 +13,5 @@ Step 1 - download the github source code files and unzip on your local computer
 Step 2 - open a python ide or command line terminal
 
 Step 3 - you may run "OutlierKNN" or "OutlierKMeans" to determine outstanding players from the NBA.
-         "OutliersKMeans" determines more relavent outstanding players than "OutlierKNN". Ensure that
+         "OutlierKMeans" determines more relavent outstanding players than "OutlierKNN". Ensure that
          the dataset folder "data" is in the same folder as the source files.
