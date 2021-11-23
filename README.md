@@ -14,5 +14,5 @@ Step 2 - You will see scatter plots and names of oustanding players for NBA regu
          
 # GAME OUTCOME PREDICTION
 Step 1 - Run the GameOutcomeTraining file<br />This creates the model and displays the results of the algorithm analysis.
-<br/><br/>
+<br><br>
 Step 2 - Run the GameOutcomePrediction file<br />Enter one of the GameOutcomeTestExamples.csv. This displays the result of the prediction.
